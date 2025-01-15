@@ -4,6 +4,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class FileParser {
     public List<List<String>> readFromFile(String fileName) {
@@ -36,5 +37,22 @@ public class FileParser {
         for (List<String> line : data) {
             System.out.println(line);
         }
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a letter: ");
+        String userInput = scanner.nextLine();
+        List<String> nameList = new ArrayList<>();
+
+        for (List<String> line : data) {
+            if (line.get(1).charAt(0) == userInput.charAt(0) && !nameList.contains(line.get(1))) {
+                nameList.add(line.get(1));
+            }
+        }
+
+        for (String name : nameList) {
+            System.out.println(name);
+        }
+
+
     }
 }
