@@ -60,6 +60,10 @@ public class Console {
                 controller.updateCharakter();
                 break;
 
+            case 9:
+                System.out.println(controller.getCharaktersByProductHerkunft());
+                break;
+
             default:
                 System.out.println("Invalid choice");
                 break;

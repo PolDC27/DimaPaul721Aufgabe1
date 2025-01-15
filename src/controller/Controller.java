@@ -73,7 +73,7 @@ public class Controller {
 
 
     public void getAllCharakters() {
-        for (Charakter customer : service.getCharakter()){
+        for (Charakter customer : service.getCharakters()){
             System.out.println(customer);
         }
     }
@@ -84,7 +84,7 @@ public class Controller {
         System.out.println("Enter Charakter id: ");
         int id = scanner.nextInt();
         scanner.nextLine();
-        for (Charakter charakter : service.getCharakter()){
+        for (Charakter charakter : service.getCharakters()){
             if (charakter.getId() == id){
                 service.deleteCharakter(charakter);
                 break;
@@ -158,6 +158,22 @@ public class Controller {
             Produkt produkt = new Produkt(newName, newPrice, herkunftsregion);
             service.updateProdukt(service.getProdukt(name),produkt);
         }
+    }
+
+
+    public List<Charakter> getCharaktersByProductHerkunft(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Charakter Herkunftsregion: ");
+        String herkunftsregion = scanner.nextLine();
+        List<Charakter> charakters = new ArrayList<>();
+        for (Charakter charakter : service.getCharakters()){
+            for (Produkt produkt : charakter.getProdukts()){
+                if (produkt.getHerkunftsregion().equals(herkunftsregion)){
+                    charakters.add(charakter);
+                }
+            }
+        }
+        return charakters;
     }
 
 }

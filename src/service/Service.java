@@ -35,7 +35,7 @@ public class Service {
     }
 
 
-    public List<Charakter> getCharakter() {
+    public List<Charakter> getCharakters() {
         return charakterRepo.getAll();
     }
 
