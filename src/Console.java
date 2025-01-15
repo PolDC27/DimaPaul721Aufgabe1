@@ -64,6 +64,18 @@ public class Console {
                 System.out.println(controller.getCharaktersByProductHerkunft());
                 break;
 
+            case 10:
+                System.out.println("Enter absteigend oder aufsteigend:");
+                Scanner scanner = new Scanner(System.in);
+                String choice1 = scanner.nextLine();
+                if (choice1.equals("absteigend")){
+                    controller.sortProduktsByPriceAbsteigend();
+                }
+                else if (choice1.equals("audsteigend")){
+                    controller.sortProduktsByPriceAufsteigend();
+                }
+
+
             default:
                 System.out.println("Invalid choice");
                 break;

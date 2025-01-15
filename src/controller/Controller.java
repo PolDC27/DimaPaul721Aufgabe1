@@ -176,4 +176,45 @@ public class Controller {
         return charakters;
     }
 
+    public void sortProduktsByPriceAufsteigend(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Charakter Id: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        for (Charakter charakter : service.getCharakters()){
+            if (charakter.getId() == id){
+                for (int i = 0; i < charakter.getProdukts().size() - 1; i++) {
+                    for (int j = i + 1; j < charakter.getProdukts().size(); j++) {
+                        if (charakter.getProdukts().get(i).getPrice() > charakter.getProdukts().get(j).getPrice()) {
+                            Produkt temp = charakter.getProdukts().get(i);
+                            charakter.getProdukts().set(i, charakter.getProdukts().get(j));
+                            charakter.getProdukts().set(j, temp);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    public void sortProduktsByPriceAbsteigend(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Charakter Id: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        for (Charakter charakter : service.getCharakters()){
+            if (charakter.getId() == id){
+                for (int i = 0; i < charakter.getProdukts().size() - 1; i++) {
+                    for (int j = i + 1; j < charakter.getProdukts().size(); j++) {
+                        if (charakter.getProdukts().get(i).getPrice() < charakter.getProdukts().get(j).getPrice()) {
+                            Produkt temp = charakter.getProdukts().get(i);
+                            charakter.getProdukts().set(i, charakter.getProdukts().get(j));
+                            charakter.getProdukts().set(j, temp);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 }
